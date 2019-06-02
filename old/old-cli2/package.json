@@ -1,0 +1,53 @@
+{
+  "name": "wiz",
+  "version": "0.0.0-development",
+  "description": "A package manager for artificial intelligence programs",
+  "main": "app.js",
+  "bin": {
+    "wiz": "./build/app.js"
+  },
+  "scripts": {
+    "clean": "del-cli ./build ./coverage",
+    "build": "npm run clean && tsc -p ./config/tsconfig.build.json",
+    "develop": "npm run clean && tsc -p .",
+    "lint": "tslint -c ./tslint.json -p ./config/tsconfig.build.json",
+    "test": "npm run lint && npm run clean && jest -c ./jest.json",
+    "test:watch": "npm run clean && jest -c ./jest.json --watch",
+    "semantic-release": "semantic-release",
+    "typedoc": "del-cli ./docs && typedoc --ignoreCompilerErrors --out ./docs --mode file --tsconfig ./config/tsconfig.build.json ./src/"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tim15/wiz-cli.git.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tim15/wiz-cli.git/issues"
+  },
+  "homepage": "https://github.com/Tim15/wiz-cli.git#readme",
+  "engines": {
+    "node": "^9.0.0",
+    "npm": "*"
+  },
+  "author": "Timothy Higinbottom <timhigins@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.9",
+    "tslib": "^1.9.3",
+    "yargs": "^12.0.1"
+  },
+  "devDependencies": {
+    "@smartive/tslint-config": "^4.0.0",
+    "@types/jest": "^23.3.1",
+    "@types/node": "^10.9.4",
+    "@types/readline-sync": "^1.4.3",
+    "del-cli": "^1.1.0",
+    "jest": "^23.5.0",
+    "semantic-release": "^15.9.9",
+    "ts-jest": "^23.1.4",
+    "tslint": "^5.11.0",
+    "tsutils": "^3.0.0",
+    "typedoc": "^0.12.0",
+    "typescript": "^3.0.1"
+  }
+}

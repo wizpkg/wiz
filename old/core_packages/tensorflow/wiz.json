@@ -1,0 +1,12 @@
+{
+  "name": "tensorflow",
+  "type": "program",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": "ai, ml, wiz",
+  "author": "",
+  "license": "MIT",
+  "install": "bash install.sh"
+}

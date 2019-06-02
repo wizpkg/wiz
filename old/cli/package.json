@@ -1,0 +1,76 @@
+{
+  "name": "wiz",
+  "version": "0.1.0-development",
+  "description": "A package manager for artificial intelligence programs",
+  "main": "dist/index.js",
+  "bin": {
+    "wiz": "./dist/app.js"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tim15/wiz-cli.git.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tim15/wiz-cli.git/issues"
+  },
+  "homepage": "https://github.com/Tim15/wiz-cli.git#readme",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "author": "Timothy Higinbottom <timhigins@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist && rimraf coverage",
+    "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
+    "lint": "tslint --force --format verbose \"src/**/*.ts\"",
+    "prepublishOnly": "npm run build",
+    "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
+    "build": "tsc --pretty",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "watch": "npm run build -- --watch",
+    "watch:test": "jest --watch",
+    "link": "npm link"
+  },
+  "dependencies": {
+    "@grpc/proto-loader": "^0.3.0",
+    "grpc": "^1.16.0",
+    "mkdirp": "^0.5.1",
+    "readline-sync": "^1.4.9",
+    "tar": "^4.4.6"
+  },
+  "devDependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "@types/jest": "^22.0.1",
+    "@types/mkdirp": "^0.5.2",
+    "@types/node": "^8.10.37",
+    "@types/readline-sync": "^1.4.3",
+    "@types/tar": "^4.0.0",
+    "coveralls": "^2.0.0",
+    "eslint": "^5.5.0",
+    "jest": "^22.0.4",
+    "prettier": "^1.5.2",
+    "rimraf": "^2.0.0",
+    "ts-jest": "^22.0.1",
+    "ts-node": "^3.2.0",
+    "tslint": "^5.0.0",
+    "tslint-config-prettier": "^1.1.0",
+    "typescript": "^2.3.0"
+  },
+  "jest": {
+    "transform": {
+      ".(ts)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testEnvironment": "node"
+  }
+}

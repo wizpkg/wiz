@@ -1,0 +1,42 @@
+## Describes the package file
+
+```yaml
+package: 
+    name: mnist
+    type: dataset
+    version: "1.0.3"
+    revised: "2/3/2019"
+    publisher: "@stanford"
+source:
+    directory: "mnist_data"
+    providers: 
+        - gcp
+        - aws
+        - microsoft
+        - url: "http://src.mnist.com/mnist.tar.gz"
+transform:
+    - download
+    - tar
+    - move
+    - process "script.sh"
+
+package:
+    name: dnc
+    type: module
+    version: "1.2.0"
+    publisher: "@deepmind"
+in:
+source:
+    git: "deepmind/dnc"
+    commit: abcabcabcabcabcabc
+deps:
+    - python: "3.7"
+    - tensorflow: "2.1"
+    - mnist: "4.1"
+out:
+install: 
+    - pip
+    - wheel
+    
+
+```

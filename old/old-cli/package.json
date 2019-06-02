@@ -1,0 +1,26 @@
+{
+  "name": "wiz-cli",
+  "version": "0.1.0",
+  "description": "A package manager for artificial intelligence programs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "ml",
+    "package manager",
+    "artificial-intelligence",
+    "machine-learning"
+  ],
+  "author": "Tim Higins",
+  "license": "Apache-2.0",
+  "bin": {
+    "wiz": "./index.js"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.9",
+    "yargs": "^12.0.1"
+  },
+  "devDependencies": {}
+}

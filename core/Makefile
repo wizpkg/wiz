@@ -1,0 +1,34 @@
+# VARIABLES
+PACKAGE="github.com/wizpkg/wizd"
+BINARY_NAME="wizd"
+GOPATH="/Users/alexkreidler/go"
+
+default: install
+
+clean: ## Trash binary files
+	@echo "--> cleaning..."
+	@go clean || (echo "Unable to clean project" && exit 1)
+	@rm -rf $(GOPATH)/bin/$(BINARY_NAME) 2> /dev/null
+	@echo "Clean OK"
+
+test: ## Run all tests
+	@echo "--> testing..."
+	@go test -v $(PACKAGE)/...
+
+export BUILD_DATE="$(shell date +%Y-%m-%d)"
+export BUILD_TIME="$(shell date +%I:%M:%S)"
+
+install: clean ## Compile sources and build binary
+	# Build protobufs
+	# @bash -c "protoc --go_out=paths=source_relative:. src/proto/*.proto"
+	@echo "--> installing..."
+	@echo Date: $(BUILD_DATE) Time: $(BUILD_TIME)
+	@go install -ldflags "-X 'main.BuildTime=$(BUILD_TIME)' -X 'main.BuildDate=$(BUILD_DATE)'" || (echo "Compilation error" && exit 1)
+	@echo "Install OK"
+
+run: install ## Run your application
+	@echo "--> running application..."
+	@$(GOPATH)/bin/$(BINARY_NAME)
+
+usage: ## List available targets
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

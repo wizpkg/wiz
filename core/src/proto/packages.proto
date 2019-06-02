@@ -1,0 +1,51 @@
+syntax = "proto3";
+option go_package = "github.com/wizpkg/wizd/src/api/install";
+package commands;
+
+// Basic definition of a package - unique and constant name, unique version
+// Can use hash instead
+message MinPackageSpec {
+    string name = 1;
+    string version = 3;
+}
+
+// Two basic package management commands, install and delete
+// These are deterministic actions on the store
+message PackageRequest {
+    oneof package {
+        MinPackageSpec spec = 1;
+        string package_hash = 4;
+    }
+    string store = 2;
+    enum Command {
+        INSTALL = 0;
+        DELETE = 1;
+    }
+    Command command = 3;
+}
+
+// A publish request. Routes the package through the daemon, into a temporary workspace for building/compiling
+// then publishes to the specified registry
+message PublishRequest {
+    MinPackageSpec spec = 1;
+    string registry = 2;
+}
+
+message PackagesRequest {
+    repeated PackageRequest package_request = 1;
+}
+
+message Error {
+    string message = 1;
+}
+
+service Packages {
+    // Installs the package[s] specified in PackageRequest
+    rpc Install (PackagesRequest) returns (Error);
+    rpc Delete (PackagesRequest) returns (Error);
+    rpc Publish (PublishRequest) returns (Error);
+}
+
+// Run registry service on Registry Servers
+// service Registry {
+// }

@@ -1,0 +1,21 @@
+matrix:
+  GOOS:
+    - linux
+  GOARCH:
+    - amd64
+    - arm
+  include:
+    - GOOS: windows
+      GOARCH: amd64
+
+workspace:
+  base: /go
+  path: src/github.com/tim15/wiz
+
+pipeline:
+  build:
+    image: golang
+    commands:
+      - go get
+      - go build
+      - go test

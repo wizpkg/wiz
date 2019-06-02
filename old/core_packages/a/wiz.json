@@ -1,0 +1,22 @@
+{
+  "name": "a",
+  "type": "program",
+  "version": "1.0.0",
+  "description": "Says hi, returns \"a\"",
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": "ai, ml, wiz",
+  "author": "",
+  "license": "MIT",
+  "language": "python",
+  "engines": {
+    "python": "^3.0"
+  },
+  "os": [{
+    "macos": "^13"
+  }],
+  "cpu": [{
+    "x86": "bin/x86"
+  }],
+  "private": "true"
+}
