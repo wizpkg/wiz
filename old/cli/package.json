@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.3.0",
-    "grpc": "^1.16.0",
+    "grpc": "^1.24.9",
     "mkdirp": "^0.5.1",
     "readline-sync": "^1.4.9",
     "tar": "^4.4.6"
